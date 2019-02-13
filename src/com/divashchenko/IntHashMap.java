@@ -6,11 +6,11 @@ import java.util.Set;
 public class IntHashMap implements IntMap {
 
     private class Entry {
-        int key;
-        int value;
+        Integer key;
+        Integer value;
         Entry next;
 
-        private Entry(int key, int value) {
+        private Entry(Integer key, Integer value) {
             this.key = key;
             this.value = value;
         }
@@ -29,18 +29,18 @@ public class IntHashMap implements IntMap {
     }
 
     @Override
-    public boolean containsKey(int key) {
+    public boolean containsKey(Integer key) {
         Entry tmp = findEntry(key);
         return tmp != null;
     }
 
     @Override
-    public boolean containsValue(int value) {
+    public boolean containsValue(Integer value) {
         for (Entry entry : table) {
             if (entry != null) {
                 Entry tmp = entry;
                 while (tmp != null) {
-                    if (tmp.value == value) {
+                    if (tmp.value.equals(value)) {
                         return true;
                     }
                     tmp = tmp.next;
@@ -52,7 +52,7 @@ public class IntHashMap implements IntMap {
     }
 
     @Override
-    public int get(int key) {
+    public int get(Integer key) {
         Entry tmp = findEntry(key);
         if (tmp != null) {
             return tmp.value;
@@ -67,7 +67,7 @@ public class IntHashMap implements IntMap {
     }
 
     @Override
-    public void put(int key, int value) {
+    public void put(Integer key, Integer value) {
         Entry tmp = findEntry(key);
         if (tmp != null) {
             tmp.value = value;
@@ -82,19 +82,19 @@ public class IntHashMap implements IntMap {
     }
 
     @Override
-    public void remove(int key) {
+    public void remove(Integer key) {
         if (containsKey(key)) {
             int keyHash = indexFor(key, table);
 
 
-            if (table[keyHash].key == key) {
+            if (table[keyHash].key.equals(key)) {
                 table[keyHash] = table[keyHash].next;
             } else {
                 Entry previousEntry = table[keyHash];
                 Entry nextEntry = table[keyHash].next;
 
                 while (nextEntry != null) {
-                    if (nextEntry.key == key) {
+                    if (nextEntry.key.equals(key)) {
                         nextEntry = nextEntry.next;
                         previousEntry.next = nextEntry;
                     } else {
@@ -134,7 +134,7 @@ public class IntHashMap implements IntMap {
         return key & (table.length - 1);
     }
 
-    private void addEntry(int key, int value) {
+    private void addEntry(Integer key, Integer value) {
         Entry entry = new Entry(key, value);
         addToTable(entry, table);
     }

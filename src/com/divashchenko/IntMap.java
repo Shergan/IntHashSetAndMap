@@ -5,17 +5,17 @@ import java.util.Set;
 public interface IntMap {
     void clear();
 
-    boolean containsKey(int key);
+    boolean containsKey(Integer key);
 
-    boolean containsValue(int value);
+    boolean containsValue(Integer value);
 
-    int get(int key);
+    int get(Integer key);
 
     boolean isEmpty();
 
-    void put(int key, int value);
+    void put(Integer key, Integer value);
 
-    void remove(int key);
+    void remove(Integer key);
 
     int size();
 
