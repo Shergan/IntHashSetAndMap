@@ -10,7 +10,7 @@ public class IntHashMap implements IntMap {
         int value;
         Entry next;
 
-        public Entry(int key, int value) {
+        private Entry(int key, int value) {
             this.key = key;
             this.value = value;
         }
@@ -38,20 +38,14 @@ public class IntHashMap implements IntMap {
     public boolean containsValue(int value) {
         for (Entry entry : table) {
             if (entry != null) {
-                if (entry.value == value) {
-                    return true;
-                }
-                if (entry.next != null) {
-                    Entry tmp = entry;
-                    while (tmp.next != null) {
-                        tmp = entry.next;
-                        if (tmp.value == value) {
-                            return true;
-                        }
+                Entry tmp = entry;
+                while (tmp != null) {
+                    if (tmp.value == value) {
+                        return true;
                     }
+                    tmp = tmp.next;
                 }
             }
-
         }
 
         return false;
@@ -59,12 +53,12 @@ public class IntHashMap implements IntMap {
 
     @Override
     public int get(int key) {
-        if (!containsKey(key)) {
+        Entry tmp = findEntry(key);
+        if (tmp != null) {
+            return tmp.value;
+        } else {
             return -1;
         }
-
-        Entry tmp = findEntry(key);
-        return tmp.value;
     }
 
     @Override
@@ -74,8 +68,9 @@ public class IntHashMap implements IntMap {
 
     @Override
     public void put(int key, int value) {
-        if (containsKey(key)) {
-            findEntry(key).value = value;
+        Entry tmp = findEntry(key);
+        if (tmp != null) {
+            tmp.value = value;
         } else {
             addEntry(key, value);
             size++;
@@ -122,9 +117,9 @@ public class IntHashMap implements IntMap {
     public Set<Integer> keySet() {
         Set<Integer> keySet = new HashSet<>();
 
-        for (int i = 0; i < table.length; i++) {
-            if (table[i] != null) {
-                Entry tmp = table[i];
+        for (Entry entry : table) {
+            if (entry != null) {
+                Entry tmp = entry;
                 while (tmp != null) {
                     keySet.add(tmp.key);
                     tmp = tmp.next;
@@ -184,9 +179,9 @@ public class IntHashMap implements IntMap {
     }
 
     private void transfer(Entry[] newTable) {
-        for (int i = 0; i < table.length; i++) {
-            if (table[i] != null) {
-                Entry tmp = table[i];
+        for (Entry entry : table) {
+            if (entry != null) {
+                Entry tmp = entry;
                 Entry tmpNext;
 
                 while (tmp != null) {
@@ -203,9 +198,9 @@ public class IntHashMap implements IntMap {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
-        for (int i = 0; i < table.length; i++) {
-            if (table[i] != null) {
-                Entry tmp = table[i];
+        for (Entry entry : table) {
+            if (entry != null) {
+                Entry tmp = entry;
                 while (tmp != null) {
                     sb.append(tmp.key).append(" = ").append(tmp.value).append(", ");
                     tmp = tmp.next;

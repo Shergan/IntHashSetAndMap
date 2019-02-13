@@ -1,6 +1,7 @@
 package com.divashchenko;
 
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Set;
 
 public class Main {
