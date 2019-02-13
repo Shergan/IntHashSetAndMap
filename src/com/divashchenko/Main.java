@@ -43,10 +43,10 @@ public class Main {
         System.out.println();
 
 
-        Set<Integer> test = intHashMap.keySet();
+        IntHashSet testSet = intHashMap.keySet();
 
-        System.out.println("Sout keySet:");
-        System.out.println(test);
+        System.out.println("Sout IntHashSet keySet:");
+        System.out.println(testSet);
         System.out.println();
 
         System.out.println("Is empty? " + intHashMap.isEmpty());

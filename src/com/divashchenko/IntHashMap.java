@@ -114,14 +114,14 @@ public class IntHashMap implements IntMap {
     }
 
     @Override
-    public Set<Integer> keySet() {
-        Set<Integer> keySet = new HashSet<>();
+    public IntHashSet keySet() {
+        IntHashSet keySet = new IntHashSet();
 
         for (Entry entry : table) {
             if (entry != null) {
                 Entry tmp = entry;
                 while (tmp != null) {
-                    keySet.add(tmp.key);
+                    keySet.put(tmp.key);
                     tmp = tmp.next;
                 }
             }

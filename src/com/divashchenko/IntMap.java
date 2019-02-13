@@ -1,7 +1,5 @@
 package com.divashchenko;
 
-import java.util.Set;
-
 public interface IntMap {
     void clear();
 
@@ -19,5 +17,5 @@ public interface IntMap {
 
     int size();
 
-    Set<Integer> keySet();
+    IntHashSet keySet();
 }
