@@ -1,6 +1,5 @@
 package com.divashchenko;
 
-import java.util.HashMap;
 import java.util.Set;
 
 public class Main {
@@ -9,10 +8,6 @@ public class Main {
         System.out.println("IntHashMap tests");
         System.out.println("===================================================");
         System.out.println();
-
-        HashMap<Integer, Integer> map = new HashMap<>();
-
-        map.keySet();
 
         IntHashMap intHashMap = new IntHashMap();
 
