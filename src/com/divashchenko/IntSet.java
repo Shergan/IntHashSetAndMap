@@ -3,13 +3,13 @@ package com.divashchenko;
 public interface IntSet {
     void clear();
 
-    boolean contains(int key);
+    boolean contains(Integer key);
 
     boolean isEmpty();
 
-    void put(int key);
+    void put(Integer key);
 
-    void remove(int key);
+    void remove(Integer key);
 
     int size();
 }
