@@ -1,12 +1,15 @@
 package com.divashchenko;
 
 import java.util.HashMap;
-import java.util.Random;
 import java.util.Set;
 
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("IntHashMap tests");
+        System.out.println("===================================================");
+        System.out.println();
+
         HashMap<Integer, Integer> map = new HashMap<>();
 
         map.keySet();
@@ -55,5 +58,36 @@ public class Main {
         System.out.println("Clear!");
         intHashMap.clear();
         System.out.println("And now? " + intHashMap.isEmpty());
+
+        System.out.println();
+        System.out.println();
+        System.out.println("IntHashSet tests");
+        System.out.println("===================================================");
+        System.out.println();
+
+        IntHashSet intHashSet = new IntHashSet();
+        intHashSet.put(10);
+        intHashSet.put(20);
+        intHashSet.put(30);
+        intHashSet.put(40);
+        intHashSet.put(50);
+        intHashSet.put(50);
+        intHashSet.put(70);
+
+        System.out.println(intHashSet);
+        System.out.println("Remove 20");
+        intHashSet.remove(20);
+        System.out.println(intHashSet);
+        System.out.println();
+
+        System.out.println("Contains 10? " + intHashSet.contains(10));
+        System.out.println("Contains 20? " + intHashSet.contains(20));
+
+        System.out.println("Size " + intHashSet.size());
+
+        System.out.println("Is empty? " + intHashSet.isEmpty());
+        System.out.println("Clear!");
+        intHashSet.clear();
+        System.out.println("And now? " + intHashSet.isEmpty());
     }
 }

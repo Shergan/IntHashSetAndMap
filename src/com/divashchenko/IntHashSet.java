@@ -33,4 +33,17 @@ public class IntHashSet implements IntSet {
     public int size() {
         return map.size();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(map.toString());
+
+        for (int i = 0; i < sb.length(); i++) {
+            if (sb.charAt(i) == '=') {
+                sb.delete(i - 1, i + 6); //delete " = null"
+            }
+        }
+
+        return sb.toString();
+    }
 }
