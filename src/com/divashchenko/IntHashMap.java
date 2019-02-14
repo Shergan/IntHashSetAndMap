@@ -1,8 +1,5 @@
 package com.divashchenko;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class IntHashMap implements IntMap {
 
     private class Entry {
